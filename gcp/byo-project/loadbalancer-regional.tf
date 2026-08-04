@@ -136,11 +136,11 @@ resource "google_compute_forwarding_rule" "regional_main" {
 
 # Regional HTTPS Proxy
 resource "google_compute_region_target_https_proxy" "regional_https_proxy" {
-  count                          = local.lb_config.enable && local.lb_config.use_regional_lb && local.lb_config.create_managed_cert ? 1 : 0
-  name                           = "${var.prefix}-regional-url-map-target-proxy"
-  region                         = var.region
-  project                        = var.project_id
-  url_map                        = google_compute_region_url_map.regional_url_map[0].id
+  count   = local.lb_config.enable && local.lb_config.use_regional_lb && local.lb_config.create_managed_cert ? 1 : 0
+  name    = "${var.prefix}-regional-url-map-target-proxy"
+  region  = var.region
+  project = var.project_id
+  url_map = google_compute_region_url_map.regional_url_map[0].id
   certificate_manager_certificates = [
     google_certificate_manager_certificate.regional_cert[0].id
   ]

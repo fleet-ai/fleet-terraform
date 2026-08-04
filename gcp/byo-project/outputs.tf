@@ -86,7 +86,7 @@ output "regional_cert_dns_authorization_record" {
     var.load_balancer_config.enable &&
     var.load_balancer_config.use_regional_lb &&
     var.load_balancer_config.create_managed_cert
-  ) ? {
+    ) ? {
     name = google_certificate_manager_dns_authorization.regional_cert_auth[0].dns_resource_record[0].name
     type = google_certificate_manager_dns_authorization.regional_cert_auth[0].dns_resource_record[0].type
     data = google_certificate_manager_dns_authorization.regional_cert_auth[0].dns_resource_record[0].data

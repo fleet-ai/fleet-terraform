@@ -65,19 +65,19 @@ module "project_factory" {
 module "fleet" {
   source = "./byo-project"
 
-  project_id                    = local.effective_project_id
-  region                        = var.region
-  location                      = var.location
-  dns_zone_name                 = var.dns_zone_name
-  dns_record_name               = var.dns_record_name
-  dns_config                    = var.dns_config
-  vpc_config                    = var.vpc_config
-  fleet_config                  = var.fleet_config
-  cache_config                  = var.cache_config
-  database_config               = var.database_config
-  load_balancer_config          = var.load_balancer_config
-  cmek                          = var.cmek
-  cloud_armor                   = var.cloud_armor
-  replicate_secrets             = var.replicate_secrets
-  allow_destroy                 = var.allow_destroy
+  project_id           = local.effective_project_id
+  region               = var.region
+  location             = var.location
+  dns_zone_name        = var.dns_zone_name
+  dns_record_name      = var.dns_record_name
+  dns_config           = var.dns_config
+  vpc_config           = var.vpc_config
+  fleet_config         = var.fleet_config
+  cache_config         = var.cache_config
+  database_config      = var.database_config
+  load_balancer_config = var.load_balancer_config
+  cmek                 = var.cmek
+  cloud_armor          = var.cloud_armor
+  replicate_secrets    = var.replicate_secrets
+  allow_destroy        = var.allow_destroy
 }

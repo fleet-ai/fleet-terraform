@@ -217,16 +217,16 @@ variable "fleet_config" {
     installers_bucket_name = optional(string)
   })
   default = {
-    image_tag             = "fleetdm/fleet:v4.85.0"
-    fleet_cpu             = "1000m"
-    fleet_memory          = "4096Mi"
-    debug_logging         = false
-    min_instance_count    = 1
-    max_instance_count    = 5
-    exec_migration        = true
-    use_h2c               = false
-    extra_env_vars        = {}
-    extra_secret_env_vars = {}
+    image_tag              = "fleetdm/fleet:v4.85.0"
+    fleet_cpu              = "1000m"
+    fleet_memory           = "4096Mi"
+    debug_logging          = false
+    min_instance_count     = 1
+    max_instance_count     = 5
+    exec_migration         = true
+    use_h2c                = false
+    extra_env_vars         = {}
+    extra_secret_env_vars  = {}
     installers_bucket_name = ""
   }
 }
@@ -293,9 +293,9 @@ variable "load_balancer_config" {
     https_redirect      = optional(bool, true)
     create_managed_cert = optional(bool, true)
     create_static_ip    = optional(bool, false)
-    backend_timeout_sec  = optional(number, 30)
-    log_sample_rate      = optional(number, 1.0)
-    proxy_subnet_cidr    = optional(string, "10.129.0.0/23")
+    backend_timeout_sec = optional(number, 30)
+    log_sample_rate     = optional(number, 1.0)
+    proxy_subnet_cidr   = optional(string, "10.129.0.0/23")
   })
   default = {
     enable              = true

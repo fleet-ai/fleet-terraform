@@ -29,7 +29,7 @@ locals {
     FLEET_MYSQL_DATABASE   = var.database_config.database_name
     FLEET_REDIS_ADDRESS    = "${module.memstore.host}:${module.memstore.port}"
     FLEET_REDIS_USE_TLS    = "false"
-    FLEET_UPGRADES_ALLOW_MISSING_MIGRATIONS          = "1"
+    # FLEET_UPGRADES_ALLOW_MISSING_MIGRATIONS          = "1"
     FLEET_LOGGING_JSON                               = "true"
     FLEET_LOGGING_DEBUG                              = var.fleet_config.debug_logging
     FLEET_SERVER_TLS                                 = "false"
@@ -218,9 +218,6 @@ resource "google_compute_region_network_endpoint_group" "neg" {
   depends_on = [module.fleet-service]
 }
 
-# Temporarily allow public access to Cloud Run URL until DNS is configured
-# TODO: Remove this once DNS is working - the conditional
-# IAM binding in loadbalancer-regional.tf will be sufficient
 resource "google_cloud_run_v2_service_iam_member" "allow_lb_invoker" {
   project  = var.project_id
   location = module.fleet-service.location
