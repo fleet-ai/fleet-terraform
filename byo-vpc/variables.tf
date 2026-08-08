@@ -122,6 +122,7 @@ variable "rds_config" {
     preferred_maintenance_window = optional(string, "thu:23:00-fri:00:00")
     skip_final_snapshot          = optional(bool, true)
     backup_retention_period      = optional(number, 7)
+    deletion_protection          = optional(bool, null)
     replicas                     = optional(number, 2)
     serverless                   = optional(bool, false)
     serverless_min_capacity      = optional(number, 2)
@@ -183,6 +184,7 @@ variable "rds_config" {
     preferred_maintenance_window = "thu:23:00-fri:00:00"
     skip_final_snapshot          = true
     backup_retention_period      = 7
+    deletion_protection          = null
     replicas                     = 2
     serverless                   = false
     serverless_min_capacity      = 2
