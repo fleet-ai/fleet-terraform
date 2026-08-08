@@ -183,9 +183,12 @@ data "aws_kms_key" "software_installers_provided" {
 }
 
 resource "aws_ecs_service" "fleet" {
-  name                               = var.fleet_config.service.name
-  launch_type                        = "FARGATE"
-  cluster                            = var.ecs_cluster
+  name        = var.fleet_config.service.name
+  launch_type = "FARGATE"
+  # Accept either a bare cluster name or a full ARN, and always submit the ARN.
+  # The AWS API returns the ARN on read, so submitting the bare name causes a
+  # spurious forced replacement on imported services (cluster is immutable).
+  cluster                            = startswith(var.ecs_cluster, "arn:") ? var.ecs_cluster : "arn:${data.aws_partition.current.partition}:ecs:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:cluster/${var.ecs_cluster}"
   task_definition                    = aws_ecs_task_definition.backend.arn
   desired_count                      = 1
   deployment_minimum_healthy_percent = 100
